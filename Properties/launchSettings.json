@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "playground_csharp": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
