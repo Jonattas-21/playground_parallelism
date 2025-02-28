@@ -5,19 +5,70 @@ public class Program
 {
     public static void Main()
     {
-        Console.WriteLine(":::::::::::::::Starting the task async game!");
+        Console.WriteLine(":::::::::::::::Starting the task async game!:::::::::::::::");
+        string output = "";
+        showInto(ref output);
 
-        //buildSimpleTaskWithCancelation();
+        bool run = true;
 
-        //buildSimpleTaskWithCancelationSource();
-
-        //buildSimpleBalanceCalculation();
-
-        builderSimpleReadLock();
+        while (run)
+        {
+            switch (output)
+            {
+                case "1":
+                    buildSimpleTaskWithCancelation();
+                    output = string.Empty;
+                    Console.WriteLine("------------> end of the execution");
+                    showInto(ref output);
+                    break;
+                case "2":
+                    buildSimpleTaskWithCancelationSource();
+                    output = string.Empty;
+                    Console.WriteLine("------------> end of the execution");
+                    showInto(ref output);
+                    break;
+                case "3":
+                    buildSimpleBalanceCalculation();
+                    output = string.Empty;
+                    Console.WriteLine("------------> end of the execution");
+                    showInto(ref output);
+                    break;
+                case "4":
+                    builderSimpleReadLock();
+                    output = string.Empty;
+                    Console.WriteLine("------------> end of the execution");
+                    showInto(ref output);
+                    break;
+                case "5":
+                    UseOfConcurrentCollections useOfConcurrentDictionary = new UseOfConcurrentCollections();
+                    useOfConcurrentDictionary.executionDictionary();
+                    output = string.Empty;
+                    Console.WriteLine("------------> end of the execution");
+                    showInto(ref output);
+                    break;
+                case "exit":
+                    run = false;
+                    output = string.Empty;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         Console.WriteLine("The end of the task");
-        Console.ReadKey();
+    }
 
+    private static void showInto(ref string output)
+    {
+        Console.WriteLine("Type the number of one of the algorithms bellow");
+        Console.WriteLine("1:    async task example with cancellation token");
+        Console.WriteLine("2:    async task example with many cancellation token");
+        Console.WriteLine("3:    simple credit/debit async operations");
+        Console.WriteLine("4:    example with read/write lock");
+        Console.WriteLine("5:    using concurrent dictionary"); //todo
+        Console.WriteLine("exit: close the app");
+
+        output = Console.ReadLine();
     }
 
     static void buildSimpleTaskWithCancelation()
@@ -56,7 +107,8 @@ public class Program
         MutexSection.SimpleBalanceCalculation(1, 1);
     }
 
-    static void builderSimpleReadLock() {
+    static void builderSimpleReadLock()
+    {
         ReaderWriterLocker.SimpleReadLock();
     }
 }

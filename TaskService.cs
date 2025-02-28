@@ -50,6 +50,7 @@
             var emergency = new CancellationTokenSource();
 
             var paranoid = CancellationTokenSource.CreateLinkedTokenSource(planned.Token, preventive.Token, emergency.Token);
+            Console.WriteLine("type any key to cancel");
 
             var task = new Task(async () =>
             {
