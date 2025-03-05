@@ -11,9 +11,12 @@ namespace playground_csharp
         static ReaderWriterLockSlim padLock = new ReaderWriterLockSlim();
         //static ReaderWriterLockSlim padLockRec = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
 
+        /*
+         This method such as a mutex, controls access to resources, and these access can be coltrolled by exclusivelly write and read for multiples threads, and there is a option for recurrency. This examples illustrate many threads reading the same resource and one thread writing.
+         */
+
         internal static void SimpleReadLock()
         {
-
             int x = 0;
 
             var tasks = new List<Task>();

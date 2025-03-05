@@ -19,7 +19,6 @@ namespace playground_csharp
             Task.Factory.StartNew(AddParis).Wait();
             AddParis();
 
-
             /* The following exemplo shows how to add or update and handling the old value if it was an update.*/
             asyncCapitals["Brazil"] = "Brasilia"; //added as usual
             asyncCapitals.AddOrUpdate("Brazil", "São Paulo",
@@ -45,7 +44,7 @@ namespace playground_csharp
             }
         }
 
-        /*Similarly todictionary, this object has the fearture of try, then it will be able to handle multiple process trying to access at the same time. */
+        /*Similarly to dictionary, this object has the fearture of try, then it will be able to handle multiple process trying to access at the same time. */
         public void executionConcurrentQueue()
         {
             var queue = new ConcurrentQueue<int>();
@@ -93,7 +92,7 @@ namespace playground_csharp
         }
 
 
-        /*This examples demonstrate that the object knows how to deal with many threads adding and peeking the itens in a sequence by processId and item, even if it's happening concurently.*/
+        /*This example demonstrates that the object knows how to deal with many threads adding and peeking the itens in a sequence by processId and item, even if it's happening concurently.*/
         public void executionConcurentBag()
         {
             var bag = new ConcurrentBag<int>();

@@ -81,8 +81,12 @@
 
                     Console.Write(animationFrames[counter % animationFrames.Length]);
                     await Task.Delay(200); // Delay for 200 milliseconds
-                    Console.SetCursorPosition(Console.CursorLeft - animationFrames[counter % animationFrames.Length].Length, Console.CursorTop);
-                    counter++;
+                    try
+                    {
+                        Console.SetCursorPosition(Console.CursorLeft - animationFrames[counter % animationFrames.Length].Length, Console.CursorTop);
+                        counter++;
+                    }
+                    catch { }
                 }
             });
 
