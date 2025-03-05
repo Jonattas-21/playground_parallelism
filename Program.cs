@@ -111,6 +111,20 @@ public class Program
                     Console.WriteLine("------------> end of the execution");
                     showInto(ref output);
                     break;
+                case "12":
+                    ParallelUse parallelUse = new ParallelUse();
+                    var t1 = new Task(parallelUse.SquareEachValueDefault);
+                    var t2 = new Task(parallelUse.SquareEachValueOptmized);
+                    t1.Start();
+                    t2.Start();
+                    Task.WaitAll(t1, t2 );
+
+                    output = string.Empty;
+                    explanation = "This approach shows two parallel code executing a math operation, however one of them is optimized to execute by chunk, which means it will resuse / share some memory between the chunks";
+                    Console.WriteLine(explanation);
+                    Console.WriteLine("------------> end of the execution");
+                    showInto(ref output);
+                    break;
                 case "exit":
                     run = false;
                     output = string.Empty;
@@ -147,6 +161,7 @@ public class Program
         Console.WriteLine(" 9:    using continuation to manage task orchestration");
         Console.WriteLine("10:    using Barrier to manage synchronization");
         Console.WriteLine("11:    using SemaphoreSlim to manage multiples");
+        Console.WriteLine("12:    using Parallel with chunks");
 
 
 
