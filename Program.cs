@@ -3,7 +3,7 @@ using System;
 
 public class Program
 {
-    public static void Main()
+    public static async void Main()
     {
         Console.WriteLine(":::::::::::::::Starting the task async game!:::::::::::::::");
         string output = "";
@@ -13,8 +13,6 @@ public class Program
         string explanation = "";
         SampleTaskCoordinator useOfSampleTaskCoordinator = new SampleTaskCoordinator();
         UseOfConcurrentCollections useOfConcurrentCollections = new UseOfConcurrentCollections();
-
-
 
         while (run)
         {
@@ -117,13 +115,25 @@ public class Program
                     var t2 = new Task(parallelUse.SquareEachValueOptmized);
                     t1.Start();
                     t2.Start();
-                    Task.WaitAll(t1, t2 );
+                    Task.WaitAll(t1, t2);
 
                     output = string.Empty;
                     explanation = "This approach shows two parallel code executing a math operation, however one of them is optimized to execute by chunk, which means it will resuse / share some memory between the chunks";
                     Console.WriteLine(explanation);
                     Console.WriteLine("------------> end of the execution");
                     showInto(ref output);
+                    break;
+                case "13":
+                    //the async creation is guarantee
+                    var one = AsyncFactoryObjOne.CreateAsyncObject();
+
+                    //the async creation is guarantee
+                    var two = new AsyncFactoryObjTwo();
+                    if (two is IAsyncInit ai){
+                        await ai.InitTask;
+                    }
+
+
                     break;
                 case "exit":
                     run = false;
