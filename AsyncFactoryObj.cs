@@ -13,6 +13,7 @@ namespace playground_csharp
         private async Task<AsyncFactoryObjOne> InitAsyncObj()
         {
             //doing many stuffs here
+            Console.WriteLine($"Creating object One with the taskID {Task.CurrentId}");
             await Task.Delay(3000);
             return this;
         }
@@ -20,6 +21,7 @@ namespace playground_csharp
         public static Task<AsyncFactoryObjOne> CreateAsyncObject()
         {
             var result = new AsyncFactoryObjOne();
+            Console.WriteLine($"object one returned with the taskID {Task.CurrentId}");
             return result.InitAsyncObj();
         }
     }
@@ -34,16 +36,15 @@ namespace playground_csharp
         public AsyncFactoryObjTwo()
         {
             InitTask = InitAsync();
+            Console.WriteLine($"object two returned with the taskID {Task.CurrentId}");
         }
 
         public Task InitTask { get; }
 
         public async Task InitAsync()
         {
+            Console.WriteLine($"Creating object two with the taskID {Task.CurrentId}");
             await Task.Delay(3000);
         }
     }
-
-
-
 }

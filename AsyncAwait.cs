@@ -2,14 +2,15 @@
 {
     internal class AsyncAwait
     {
-        public int calculateValue()
+        private int calculateValue()
         {
             Thread.Sleep(5000);
             return 123;
         }
 
-        public async Task<int> calculateValueAsync()
+        private async Task<int> calculateValueAsync()
         {
+            Console.WriteLine($"Start to calculate with the taskID {Task.CurrentId}");
             await Task.Delay(5000);
             return 123;
         }
@@ -31,10 +32,10 @@
                 }, TaskScheduler.FromCurrentSynchronizationContext());
             */
 
+            Console.WriteLine("Calling await function, and release the thread by creating another task behinde the scene");
             var caculation = await calculateValueAsync();
             string result = caculation.ToString();
-
-
+            Console.WriteLine($"Calculation done value: {caculation} with the taskID {Task.CurrentId}");
             return result;
         }
     }

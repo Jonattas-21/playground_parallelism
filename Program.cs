@@ -3,7 +3,7 @@ using System;
 
 public class Program
 {
-    public static async void Main()
+    public async static Task Main()
     {
         Console.WriteLine(":::::::::::::::Starting the task async game!:::::::::::::::");
         string output = "";
@@ -133,6 +133,23 @@ public class Program
                         await ai.InitTask;
                     }
 
+                    output = string.Empty;
+                    explanation = "This example will create two objects asynchronous using 2 differents approaches, the first with a factory function ans the seconds with an interface.";
+                    Console.WriteLine(explanation);
+                    Console.WriteLine("------------> end of the execution");
+                    showInto(ref output);
+                    break;
+                case "14":
+                    AsyncAwait asyncAwait = new AsyncAwait();
+                    //var task2 =  asyncAwait.ExecuteInterface();
+                    //task2.Wait();
+                    await asyncAwait.ExecuteInterface();
+
+                    output = string.Empty;
+                    explanation = "Simply use of async await";
+                    Console.WriteLine(explanation);
+                    Console.WriteLine("------------> end of the execution");
+                    showInto(ref output);
 
                     break;
                 case "exit":
@@ -172,11 +189,13 @@ public class Program
         Console.WriteLine("10:    using Barrier to manage synchronization");
         Console.WriteLine("11:    using SemaphoreSlim to manage multiples");
         Console.WriteLine("12:    using Parallel with chunks");
-
-
-
-
+        Console.WriteLine("13:    using async to build a constructor");
+        Console.WriteLine("14:    using async await example");
         Console.WriteLine("exit: close the app");
+        Console.WriteLine(string.Empty);
+        Console.Write("Type here --> ");
+
+
 
         output = Console.ReadLine();
     }
